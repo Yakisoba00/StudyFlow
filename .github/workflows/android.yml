@@ -17,7 +17,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.21'      # Укажите версию Go вашего проекта
+          go-version: '1.21'
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -45,10 +45,11 @@ jobs:
 
       - name: Build APK
         run: |
+          # Проверяем наличие иконки
           if [ -f "icon.png" ]; then
-            fyne package -os android -appID com.yourcompany.studyflow -icon icon.png
+            fyne package -os android -app-id com.yourcompany.studyflow -icon icon.png
           else
-            fyne package -os android -appID com.yourcompany.studyflow
+            fyne package -os android -app-id com.yourcompany.studyflow
           fi
 
       - name: Upload APK
